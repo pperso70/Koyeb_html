@@ -14,34 +14,28 @@
       box-sizing: border-box;
     }
 
-    canvas {
-      margin-top: 20px;
-      display: block;
-      max-width: 100%;
-    }
-
     button {
       margin: 10px;
       padding: 10px 20px;
       font-size: 16px;
     }
 
-    .container {
-      display: flex;
-      /* Utilisation de flexbox */
-      justify-content: center;
-      /* Espacement autour des éléments */
-      align-items: center;
-      /* Alignement vertical centré */
-      margin-top: 10px;
-      /* Espacement réduit entre le conteneur et l'élément précédent */
+    .chart-container {
+      max-width: 600px;
+      /* Largeur maximale du conteneur */
+      width: 100%;
+      /* Le conteneur occupe 100% de la largeur disponible */
+      margin: 0 auto;
+      /* Centre horizontalement */
     }
 
-    .chart-container {
-      width: 330px;
-      height: 250px;
-      margin: 0 20px;
-      border: 1px solid #ccc;
+    canvas {
+      display: block;
+      /* Évite les espaces blancs autour du canvas */
+      max-width: 100%;
+      /* Assure que le canvas ne dépasse pas la largeur du conteneur */
+      height: auto;
+      /* Maintient les proportions */
     }
 
     #cameraImage {
@@ -71,7 +65,7 @@
 
   <div id="data">
     <h2 style="display:inline;">Données du système</h2>
-    <p style="display:inline; margin-left: 10px;">Koyeb3</p>
+    <p style="display:inline; margin-left: 10px;">mvdch</p>
     <p>T Cycle: <span id="temps_de_cycle">--</span></p>
     <p>Position: <span id="position">--</span></p>
     <p>Température radiateur: <span id="temperature">--</span>°C</p>
@@ -79,12 +73,10 @@
     <p> redemarrage: <span id="redemarrage">--</span></p>
   </div>
 
-  <div class="container">
-    <div class="chart-container">
-      <!-- Canvas pour afficher le graphique Chart.js -->
-      <canvas id="myChart" width="400" height="400"></canvas>
-    </div>
-    <img id="cameraImage" alt="Image de la caméra">
+  <img id="cameraImage" alt="Image de la caméra">
+
+  <div class="chart-container">
+    <canvas id="myChart" width="600" height="600"></canvas>
   </div>
 
   <!-- Boutons pour ajuster le début et la fin de l'affichage -->
@@ -93,8 +85,8 @@
     <button data-mode="1" onclick="changeMode(1)">5 Mn</button>
     <button data-mode="2" onclick="changeMode(2)">1 H</button>
     <button data-mode="3" onclick="changeMode(3)">24 H</button>
-  </div>
-
+  </div>  
+  
   <script>
     let socket;
     let myChart;
